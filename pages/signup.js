@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { TextField } from 'formik-material-ui';
 import * as Yup from 'yup';
-import { withStyles, Container, Grid } from '@material-ui/core';
+import { withStyles, Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Head from 'next/head';
 import Nav from '../components/nav';
@@ -10,14 +10,14 @@ import Link from 'next/link';
 
 export default function index() {
   const [buttonText, setButtonText] = useState('Click me, please');
+
   return (
     <Container
       style={{
         //marginTop: theme.spacing.unit * 8,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justify: 'center'
+        alignItems: 'center'
         // padding: `${theme.spacing.unit * 5}px ${theme.spacing.unit *
         //   5}px ${theme.spacing.unit * 5}px`
       }}
@@ -47,6 +47,20 @@ export default function index() {
               fullWidth
             />
             <Field
+              name="firstName"
+              placeholder="First Name"
+              component={TextField}
+              style={{ margin: 10 }}
+              fullWidth
+            />
+            <Field
+              name="lastName"
+              placeholder="Last Name"
+              component={TextField}
+              style={{ margin: 10 }}
+              fullWidth
+            />
+            <Field
               type="password"
               name="password"
               placeholder="Password"
@@ -54,26 +68,34 @@ export default function index() {
               style={{ margin: 10 }}
               fullWidth
             />
-            <Link href="/mainpage">
+            <Field
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              component={TextField}
+              style={{ margin: 10 }}
+              fullWidth
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              style={{ margin: 10 }}
+            >
+              Sign Up
+            </Button>
+            <Link href="/index">
               <Button
-                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 style={{ margin: 10 }}
+                onClick={() => {
+                  console.log('test');
+                }}
               >
-                Submit
-              </Button>
-            </Link>
-            <Link href="/signup">
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                style={{ margin: 10 }}
-                onClick={() => {}}
-              >
-                Sign Up
+                Sign In
               </Button>
             </Link>
           </Form>
