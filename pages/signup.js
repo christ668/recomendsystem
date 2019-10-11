@@ -23,14 +23,20 @@ export default function index() {
       }}
     >
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', password: '', firstName: '', lastName: '', confirmPassword: '' }}
         validationSchema={Yup.object().shape({
           email: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
           password: Yup.string()
             .min(10, 'Password must be at least 10 characters')
-            .required('Password is required')
+            .required('Password is required'),
+          firstName: Yup.string()
+            .required('First Name is required'),
+          lastName: Yup.string()
+            .required('Last Name is required'),
+          confirmPassword: Yup.string()
+            .required('reconfirm password is required'),
         })}
         onSubmit={() => {
           console.log('asd');
@@ -48,6 +54,7 @@ export default function index() {
             />
             <Field
               name="firstName"
+              type="text"
               placeholder="First Name"
               component={TextField}
               style={{ margin: 10 }}
